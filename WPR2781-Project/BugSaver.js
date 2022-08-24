@@ -1,5 +1,3 @@
-const BugForm = document.getElementById("Bug-Form"); 
-BugForm.addEventListener("submit", handleSubmit);
 //Information we need to save the
 // + means complete
 /*
@@ -8,20 +6,22 @@ BugForm.addEventListener("submit", handleSubmit);
 - User id to know who created issues - temporaryID created (Revision needed)
 - Date of issue identified +
 - Project that issue is related to + (Placeholder)
-- Who the issue is assigned to + (Placeholder)
+- Who the issue is assigned to + (Placeholder) +
 - Status of the issue [open/resolved/overdue] +
 */
 
 let date = new Date();//date of issue
-
-
-
 let Bugs = [];
+
+const BugForm = document.getElementById("Bug-Form"); 
+BugForm.addEventListener("submit", handleSubmit);
+
 function handleSubmit(event) {
+  //preventDefault prevents auto reloading
   event.preventDefault();
     var data = new FormData(event.target);
 
-    data.append("category", document.getElementById("category").value);
+    data.append("summary", document.getElementById("summary").value);
     data.append("Description", document.getElementById("Description").value);
     data.append("ProjectName", document.getElementById("ProjectName").value);
     data.append("PersonAssigned", document.getElementById("PersonAssigned").value);
@@ -44,12 +44,12 @@ function handleSubmit(event) {
       this.Status = Status;
    }
 //need to create a better user id so we can use it in the project
-   let userId = category+description+Math.floor(Math.random() * 10) + 1 
+   let userId = summary+description+Math.floor(Math.random() * 10) + 1 
    let bug = new DataBaseBugs(userId,summary,description, date, projectName, personAssigned, status);
 
    Bugs.push(bug);//add bug to array that is to be saved
-
-   alert("Bug Added with id: "+userId);
+console.log("Bug Added with id: "+userId)
+  // alert("Bug Added with id: "+userId);
 
    //The key user is an identifier we can use to identify the database basically.
    localStorage.DataBase = localStorage.setItem("Bugs", JSON.stringify(Bugs))
