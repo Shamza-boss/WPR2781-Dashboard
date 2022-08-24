@@ -1,0 +1,25 @@
+body{
+
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+
+table th{
+    text-align: left;
+}
+
+button:hover{
+    cursor: pointer;
+   
+
+}
+
+label{
+    color: white;
+}
+
+
+    
