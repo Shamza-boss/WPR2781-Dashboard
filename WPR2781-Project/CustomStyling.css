@@ -20,6 +20,9 @@ h1{
     width:20%;
     background: #DDEBF2;
 }
+form{
+    background: #DDEBF2;
+}
 .card{
     width: 100% !important;
 }
