@@ -1,0 +1,81 @@
+<!-- The people we can assign to the bug to solve -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Project</title>
+    <link rel="stylesheet" href="admin.css">
+    <script src="admin.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="CustomStyling.css">
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <!-- The below link allows us to use font-awesome icon packs -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+    <!-- Nivigation bar for Dashboard -->
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar scroll</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarScroll">
+        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Link
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled">Link</a>
+          </li>
+        </ul>
+        
+      </div>
+    </div>
+  </nav>
+  <section class="white-section">
+    <div class="container-fluid">
+          <h1 class="Main-Heading" style="text-align: center;">Welcome to the Team Optimize Dashboard</h1>
+          <form>
+            <div class="mb-3">
+                <label for="ID" class="form-label">ID</label>
+                <input type="text" class="form-control" id="ID"/>
+                
+              </div>
+              <div class="mb-3">
+                <label for="pname" class="form-label">Project Name</label>
+                <input type="text" class="form-control" id="pname" />
+               
+              </div>
+              <div class="mb-3">
+                <label for="describe" class="form-label">Description</label>
+                <input type="text" class="form-control" id="describe" />
+               
+              </div>
+                      
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-primary">Cancel</button>
+          </form>
+
+
+          </div>
+          </section>
+
+</body>
+</html>
