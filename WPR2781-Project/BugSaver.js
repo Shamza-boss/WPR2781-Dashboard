@@ -11,9 +11,9 @@
 */
 
 let date = new Date();//date of issue
-let Bugs = [];
-localStorage.setItem("Vals", JSON.stringify(Bugs));
-Bugs = JSON.parse(localStorage.getItem("Vals"))
+let Database = JSON.parse(localStorage.getItem("Bugs"));
+let Bugs = [].concat(Database);
+
 
 const BugForm = document.getElementById("Bug-Form"); 
 BugForm.addEventListener("submit", handleSubmit);
@@ -53,7 +53,9 @@ function handleSubmit(event) {
    let bug = new DataBaseBugs(userId,summary,description, date, projectName, personAssigned, status, phase);
 
    Bugs.push(bug);//add bug to array that is to be saved
-console.log("Bug Added with id: "+userId)
+   localStorage.setItem("Vals", JSON.stringify(Bugs));
+  // Bugs = JSON.parse(localStorage.getItem("Vals"))
+  // console.log("Bug Added with id: "+userId)
   // alert("Bug Added with id: "+userId);
 
    //The key user is an identifier we can use to identify the database basically.
