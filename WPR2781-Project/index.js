@@ -104,4 +104,7 @@ for(let i =0; i < ElementsDone.length; i++) {
 //   .appendChild(ElementsBacklog[0], document.body.childNodes[0]);
 
 
+<<<<<<< Updated upstream:WPR2781-Project/index.js
 
+=======
+>>>>>>> Stashed changes:WPR2781-Project/Main.js
