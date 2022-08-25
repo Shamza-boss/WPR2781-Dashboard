@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="CustomStyling.css">
     <script src="bootstrap/js/bootstrap.js"></script>
     <!-- The below link allows us to use font-awesome icon packs -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <title>Bug-Dashboard</title>
 </head>
 <body>
-<<<<<<< Updated upstream
   <!-- Nivigation bar for Dashboard -->
   <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
@@ -48,60 +48,45 @@
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
-=======
-<!-- Nivigation bar for Dashboard -->
-<nav class="navbar navbar-expand-lg bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar scroll</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarScroll">
-      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="./Main.html">Dashboard</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./BugAdder.html">Add Bug</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link"  onclick="manageUser()">Add User</a>
-        </li>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
->>>>>>> Stashed changes
     </div>
   </nav>
-  <!-- End of navigation bar -->
   <section class="white-section">
     <div class="container-fluid">
           <h1 class="Main-Heading" style="text-align: center;">Welcome to the Team Optimize Dashboard</h1>
-        <div class="row justify-content-center">
-          <!-- Column 1 -->
-          <div class="col-md-6 col-sm-12 colSec">
-            <form>
-                <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Bug Category</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                </div>
-                <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">Description</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1">
-                </div>
-                <div class="mb-3 form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
-          </div>
-        </div>
+  <button type="button" class="btn btn-primary" onclick="AddProject()">Add Project</button>
+  <br/>
+  <br/>
+    <table class="table table-dark table-hover">
+        <tr>
+          <th>ID</th>
+         
+          <th>Project Name</th>
+          <th>Description</th>
+          
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+        <tbody  id = "ProjectList"></tbody>
+        <!-- <tr>
+          <td>1</td>
+          <td>WPR01</td>
+          <td>Web Programming Project 1. Creating a bug tracking system.</td>
+          
+          <td><button type="button" name="edit" class="btn btn-primary">Edit</button></td>
+          <td><button type="button" name="delete" class="btn btn-primary">Delete</button></td>
+        </tr> -->
+        <!-- <tr>
+            <td>2</td>
+            <td>DBM00</td>
+            <td>Database Management. Connecting the database to local server.</td>
+            
+            <td><button type="button" name="edit" class="btn btn-primary">Edit</button></td>
+          <td><button type="button" name="delete" class="btn btn-primary">Delete</button></td>
+        </tr> -->
+       
+      </table>
       </div>
-  </section>
+      </section>
+      <script src="./Project.js"></script>
 </body>
-
-<script src="BugSaver.js"></script>
 </html>
