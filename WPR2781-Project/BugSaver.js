@@ -12,6 +12,8 @@
 
 let date = new Date();//date of issue
 let Bugs = [];
+localStorage.setItem("Vals", JSON.stringify(Bugs));
+Bugs = JSON.parse(localStorage.getItem("Vals"))
 
 const BugForm = document.getElementById("Bug-Form"); 
 BugForm.addEventListener("submit", handleSubmit);
@@ -26,6 +28,7 @@ function handleSubmit(event) {
     data.append("ProjectName", document.getElementById("ProjectName").value);
     data.append("PersonAssigned", document.getElementById("PersonAssigned").value);
     data.append("Status", document.getElementById("Status").value);
+    data.append("Phase", document.getElementById("Phase").value);
 
     let value = [...data.entries()];
     let summary = value[0][1];
@@ -33,8 +36,9 @@ function handleSubmit(event) {
     let projectName = value[2][1];
     let personAssigned = value[3][1];
     let status = value[4][1];
+    let phase = value[5][1];
 
-    function DataBaseBugs(id,summary,description, date, project,PersonAssigned,Status){
+    function DataBaseBugs(id,summary,description, date, project,PersonAssigned,Status, phase){
       this.id = id;
       this.summary = summary;
       this.description = description;
@@ -42,10 +46,11 @@ function handleSubmit(event) {
       this.projectName = project;
       this.PersonAssigned = PersonAssigned;
       this.Status = Status;
+      this.phase = phase;
    }
 //need to create a better user id so we can use it in the project
    let userId = summary+description+Math.floor(Math.random() * 10) + 1 
-   let bug = new DataBaseBugs(userId,summary,description, date, projectName, personAssigned, status);
+   let bug = new DataBaseBugs(userId,summary,description, date, projectName, personAssigned, status, phase);
 
    Bugs.push(bug);//add bug to array that is to be saved
 console.log("Bug Added with id: "+userId)
