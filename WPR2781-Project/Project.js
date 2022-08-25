@@ -5,7 +5,8 @@ if(oldProjects!=null){
     Projects = [].concat(oldProjects);
 }
 
-function AddProject(){
+function AddNewProject(){
+    
     let Name = prompt("Enter your Project Name");
     let Description = prompt("Enter your Project Description");      
 
@@ -14,16 +15,18 @@ function AddProject(){
         this.projectDescription = projectDescription;
     };
 
-    let NewProject = Project(Name, Description);
-    localStorage.setItem('Project', JSON.stringify(Projects));                
+    let NewProject = new Project(Name, Description);               
     Projects.push(NewProject);
-    console.log(Projects);
+    localStorage.setItem('Projects', JSON.stringify(Projects)); 
+    //console.log(Projects);
+    renderProjects();
 }
 function renderProjects(){
     Data = JSON.parse(localStorage.getItem('Projects'));
+    console.log(Data);
     html = '';
 for(let i=0; i<Data.length; i++){
-    html += "<tr><td>"+i+"</td><td>"+Data[i].projectName+"</td><td>"+Data[i].projectDescription+"</td>/tr>";
+    html += "<tr><td>"+i+"</td><td>"+Data[i].projectName+"</td><td>"+Data[i].projectDescription+"</td></tr>";
 }
     Data.forEach(function(user){
        
@@ -43,5 +46,16 @@ function manageUser(){
       window.location.href = './UserManager.html';
     }
   }
-
- // renderProjects();
+  function AddProject(){
+    let username = prompt("Enter your username");
+    let password = prompt("Enter your password");
+    if(username != "admin" && password != "admin123"){
+      alert("Sorry, you are not allowed to add users");
+      window.location.assign = './Main.html';
+    }
+    else if(username == "admin" && password == "admin123"){
+      alert("Welcome administrator!");
+      window.location.href = './AdminProject.html';
+    }
+  }
+ renderProjects();

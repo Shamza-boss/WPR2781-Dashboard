@@ -117,3 +117,15 @@ function manageUser(){
   }
 }
 
+function AddProject(){
+  let username = prompt("Enter your username");
+  let password = prompt("Enter your password");
+  if(username != "admin" && password != "admin123"){
+    alert("Sorry, you are not allowed to add users");
+    window.location.assign = './Main.html';
+  }
+  else if(username == "admin" && password == "admin123"){
+    alert("Welcome administrator!");
+    window.location.href = './AdminProject.html';
+  }
+}

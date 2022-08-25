@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page</title>
-    <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="CustomStyling.css">
     <script src="bootstrap/js/bootstrap.js"></script>
@@ -31,6 +30,9 @@
           <li class="nav-item">
             <a class="nav-link"  onclick="manageUser()">Add User</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link"  onclick="AddProject()">AddProject</a>
+          </li>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
@@ -41,7 +43,7 @@
   <section class="white-section">
     <div class="container-fluid">
           <h1 class="Main-Heading" style="text-align: center;">Welcome to the Team Optimize Dashboard</h1>
-  <button type="button" class="btn btn-primary" onclick="AddProject()">Add Project</button>
+  <button type="button" class="btn btn-primary" onclick="AddNewProject()">Add Project</button>
   <br/>
   <br/>
     <table class="table table-dark table-hover">
@@ -50,28 +52,8 @@
          
           <th>Project Name</th>
           <th>Description</th>
-          
-          <th>Edit</th>
-          <th>Delete</th>
         </tr>
         <tbody  id = "ProjectList"></tbody>
-        <!-- <tr>
-          <td>1</td>
-          <td>WPR01</td>
-          <td>Web Programming Project 1. Creating a bug tracking system.</td>
-          
-          <td><button type="button" name="edit" class="btn btn-primary">Edit</button></td>
-          <td><button type="button" name="delete" class="btn btn-primary">Delete</button></td>
-        </tr> -->
-        <!-- <tr>
-            <td>2</td>
-            <td>DBM00</td>
-            <td>Database Management. Connecting the database to local server.</td>
-            
-            <td><button type="button" name="edit" class="btn btn-primary">Edit</button></td>
-          <td><button type="button" name="delete" class="btn btn-primary">Delete</button></td>
-        </tr> -->
-       
       </table>
       </div>
       </section>
