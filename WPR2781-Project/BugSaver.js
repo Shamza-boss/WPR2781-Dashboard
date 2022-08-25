@@ -12,7 +12,13 @@
 
 let date = new Date();//date of issue
 let Database = JSON.parse(localStorage.getItem("Bugs"));
-let Bugs = [].concat(Database);
+let Bugs = []
+if(Database!=null){
+  Bugs = [].concat(Database);
+}
+
+
+
 
 
 const BugForm = document.getElementById("Bug-Form"); 
@@ -48,12 +54,15 @@ function handleSubmit(event) {
       this.Status = Status;
       this.phase = phase;
    }
+   if(summary!=null||description!=null||projectName!=null||personAssigned!=null||status!=null||phase!=null){
+    let userId = summary+description+Math.floor(Math.random() * 10) + 1 
+    let bug = new DataBaseBugs(userId,summary,description, date, projectName, personAssigned, status, phase);
+ 
+    Bugs.push(bug);//add bug to array that is to be saved
+    localStorage.setItem("Vals", JSON.stringify(Bugs));
+   }
 //need to create a better user id so we can use it in the project
-   let userId = summary+description+Math.floor(Math.random() * 10) + 1 
-   let bug = new DataBaseBugs(userId,summary,description, date, projectName, personAssigned, status, phase);
-
-   Bugs.push(bug);//add bug to array that is to be saved
-   localStorage.setItem("Vals", JSON.stringify(Bugs));
+   
   // Bugs = JSON.parse(localStorage.getItem("Vals"))
   // console.log("Bug Added with id: "+userId)
   // alert("Bug Added with id: "+userId);
@@ -61,9 +70,6 @@ function handleSubmit(event) {
    //The key user is an identifier we can use to identify the database basically.
    localStorage.DataBase = localStorage.setItem("Bugs", JSON.stringify(Bugs))
   //localStorage.DataBase = user1;
-<<<<<<< Updated upstream
-}
-=======
 }
 
 function manageUser(){
@@ -78,4 +84,3 @@ function manageUser(){
     window.location.href = './UserManager.html';
   }
 }
->>>>>>> Stashed changes
