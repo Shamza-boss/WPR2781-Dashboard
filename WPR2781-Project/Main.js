@@ -6,6 +6,7 @@ let ElementsBacklog = [];
 let ElementsReady = [];
 let ElementsProgress = [];
 let ElementsDone = [];
+let id = localStorage.getItem('userID');
 console.log(Database);
 Database.forEach((bug) => {
   if (bug.phase == "Backlog") {
@@ -97,19 +98,14 @@ for(let i =0; i < ElementsProgress.length; i++) {
 for(let i =0; i < ElementsDone.length; i++) {
   document.getElementById("Done").appendChild(ElementsDone[i], document.body.childNodes[0]);
 }
-//console.log(Fragments[1]);
 
-// You can use native DOM methods to insert the fragment:
-// document
-//   .getElementById("BackLog")
-//   .appendChild(ElementsBacklog[0], document.body.childNodes[0]);
 
 function manageUser(){
   let username = prompt("Enter your username");
   let password = prompt("Enter your password");
   if(username != "admin" && password != "admin123"){
     alert("Sorry, you are not allowed to add users");
-    window.location.assign = './Main.html';
+    window.location.href = './Main.html';
   }
   else if(username == "admin" && password == "admin123"){
     alert("Welcome administrator!");
@@ -122,10 +118,26 @@ function AddProject(){
   let password = prompt("Enter your password");
   if(username != "admin" && password != "admin123"){
     alert("Sorry, you are not allowed to add users");
-    window.location.assign = './Main.html';
+    window.location.href = './Main.html';
   }
   else if(username == "admin" && password == "admin123"){
     alert("Welcome administrator!");
     window.location.href = './AdminProject.html';
   }
+}
+
+function ManageBuggers(){
+  let id = localStorage.getItem('userID');
+  if(id==null){
+    alert("Please Login");
+    window.location.href = './Login.html';
+  }
+  else{
+    window.location.href = './BugAdder.html';
+  }
+}
+
+function ResetDB(){
+  localStorage.clear();
+window.location.reload();
 }

@@ -1,4 +1,4 @@
-
+let id = localStorage.getItem('userID');
 let oldProjects = JSON.parse(localStorage.getItem('Projects'))
 let Projects = []
 if(oldProjects!=null){
@@ -14,12 +14,15 @@ function AddNewProject(){
         this.projectName = projectName;
         this.projectDescription = projectDescription;
     };
-
-    let NewProject = new Project(Name, Description);               
-    Projects.push(NewProject);
-    localStorage.setItem('Projects', JSON.stringify(Projects)); 
-    //console.log(Projects);
-    renderProjects();
+    let NewProject = new Project(Name, Description);
+    if(NewProject.name !== null && NewProject.Description!== null){
+      Projects.push(NewProject);
+      localStorage.setItem('Projects', JSON.stringify(Projects)); 
+      console.log(Projects);
+      //localStorage.clear();
+      renderProjects();
+    }        
+    
 }
 function renderProjects(){
     Data = JSON.parse(localStorage.getItem('Projects'));
@@ -33,13 +36,22 @@ for(let i=0; i<Data.length; i++){
     });
     document.getElementById('ProjectList').innerHTML = html;
 }
-
+function ManageBuggers(){
+  if(id==null){
+    alert("Please Login");
+    window.location.href = './Login.html';
+  }
+  else{
+    window.location.href = './BugAdder.html';
+  }
+}
+//why
 function manageUser(){
     let username = prompt("Enter your username");
     let password = prompt("Enter your password");
     if(username != "admin" && password != "admin123"){
       alert("Sorry, you are not allowed to add users");
-      window.location.assign = './Main.html';
+      window.location.href = './Main.html';
     }
     else if(username == "admin" && password == "admin123"){
       alert("Welcome administrator!");
@@ -51,7 +63,7 @@ function manageUser(){
     let password = prompt("Enter your password");
     if(username != "admin" && password != "admin123"){
       alert("Sorry, you are not allowed to add users");
-      window.location.assign = './Main.html';
+      window.location.href = './Main.html';
     }
     else if(username == "admin" && password == "admin123"){
       alert("Welcome administrator!");

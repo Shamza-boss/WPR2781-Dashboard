@@ -4,90 +4,81 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="CustomStyling.css">
     <script src="bootstrap/js/bootstrap.js"></script>
     <!-- The below link allows us to use font-awesome icon packs -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <title>Bug-Dashboard</title>
 </head>
 <body>
-<!-- Nivigation bar for Dashboard -->
-<nav class="navbar navbar-expand-lg bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar scroll</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarScroll">
-      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-        <li class="nav-item">
-          <a class="nav-link active"  href="./Main.html">Dashboard</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./BugAdder.html">Add Bug</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link"  onclick="manageUser()">Add User</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link"  onclick="AddProject()">AddProject</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="./Login.html">Log in</a>
-          </li>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</nav>
-  <section class="white-section">
+  <!-- Nivigation bar for Dashboard -->
+  <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
-          <h1 class="Main-Heading" style="text-align: center;">Welcome to the Team Optimize Dashboard</h1>
-        <div class="row justify-content-center">
-          <!-- Column 1 -->
-          <div class="col-md-6 col-sm-12 colSec">
-            <form id="Bug-Form">
-                <div class="mb-3">
-                  <label for="summary" class="form-label">Bug summary</label>
-                  <input type="text" class="form-control" id="summary">
-                </div>
-                <div class="mb-3">
-                  <label for="Description" class="form-label">Bug Description</label>
-                  <input type="text" class="form-control" id="Description">
-                </div>
-                <div class="mb-3">
-                  <label for="PersonAssigned" class="form-label">Person assigned name</label>
-                  <input type="text" class="form-control" id="PersonAssigned">
-                </div>
-                <div class="mb-3 form-floating">
-                  <select class="form-select" id ="RealOption" aria-label="Floating label select example">
-                  </select>
-                </div>
-                <div class="mb-3 form-floating">
-                  <select class="form-select" id="Status" aria-label="Floating label select example">
-                    <option value="Open">Open</option>
-                    <option value="Resolved">Resolved</option>
-                    <option value="Overdue">Overdue</option>
-                  </select>
-                </div>
-                <div class="mb-3 form-floating">
-                  <select class="form-select" id="Phase" aria-label="Floating label select example">
-                    <option value="Backlog">Backlog</option>
-                    <option value="Ready">Ready</option>
-                    <option value="Progress">In progress</option>
-                    <option value="Done">Done</option>
-                  </select>
-                </div>
-                <button type="submit" onclick="submit" id="BugButton" class="btn btn-primary">Submit</button>
-              </form>
-          </div>
-        </div>
+      <a class="navbar-brand" href="#">Navbar scroll</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarScroll">
+        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="./Main.html">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" onclick="ManageBuggers()">Add Bug</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  onclick="manageUser()">Add User</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"onclick="ResetDB()">resetDB</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./Login.html">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" onclick="AddProject()">AddProject</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
       </div>
-  </section>
-</body>
+    </div>
+  </nav>
+    <!-- End of navigation bar -->
 
-<script src="./login.js"></script>
+    <section class="white-section">
+        <div class="container-fluid">
+              <h1 class="Main-Heading" style="text-align: center;">Welcome to the Team Optimize Dashboard</h1> <br>
+              <h2 class="Main-Heading" style="text-align: center";>Please enter your details to log in and verify that you are an admin. <br> 
+                If you ar a new user, please have an admin create your account.</h2> <br> <br>
+            <div class="row justify-content-center">
+              <div class="col-md-6 col-sm-12 colSec">
+                <form id="LoginForm">
+                    <div class="mb-3">
+                      <label for="UserFullName" class="form-label">Full name</label>
+                      <input type="text" class="form-control" id="UserFullName" aria-describedby="NameAndSurname">
+                      <div id="NameAndSurname" class="form-text">Please enter your name and surname</div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="Username" class="form-label">Username</label>
+                      <input type="text" class="form-control" id="Username" aria-describedby="UNdesc">
+                      <div id="UNdesc" class="form-text">This is your registered username</div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="password" class="form-label">Password</label>
+                      <input type="password" class="form-control" id="password" aria-describedby="protected">
+                      <div id="protected" class="form-text">This is your private password</div>
+                    </div>
+                
+                    <button type="submit" onclick="submit" class="btn btn-primary">Log in</button>
+                  </form>
+              </div>
+            </div>
+          </div>
+      </section>
+      <script src="./login.js"></script>
+</body>
 </html>

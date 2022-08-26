@@ -1,3 +1,4 @@
+let id = localStorage.getItem('userID');
 function getNewUserId(name, suname, username){
     userBase = JSON.parse(localStorage.getItem('userBase'));
     let namet = name.slice(0, 1).toUpperCase();
@@ -58,13 +59,21 @@ function renderUsers(){
     });
     document.getElementById('userList').innerHTML = html;
 }
-
+function ManageBuggers(){
+  if(id==null){
+    alert("Please Login");
+    window.location.href = './Login.html';
+  }
+  else{
+    window.location.href = './BugAdder.html';
+  }
+}
 function manageUser(){
     let username = prompt("Enter your username");
     let password = prompt("Enter your password");
     if(username != "admin" && password != "admin123"){
       alert("Sorry, you are not allowed to add users");
-      window.location.assign = './Main.html';
+      window.location.href = './Main.html';
     }
     else if(username == "admin" && password == "admin123"){
       alert("Welcome administrator!");
@@ -77,7 +86,7 @@ function manageUser(){
     let password = prompt("Enter your password");
     if(username != "admin" && password != "admin123"){
       alert("Sorry, you are not allowed to add users");
-      window.location.assign = './Main.html';
+      window.location.href = './Main.html';
     }
     else if(username == "admin" && password == "admin123"){
       alert("Welcome administrator!");
