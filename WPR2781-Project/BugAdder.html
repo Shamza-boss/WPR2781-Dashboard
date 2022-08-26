@@ -12,7 +12,8 @@
     <title>Bug-Dashboard</title>
 </head>
 <body>
-<<<<<<< Updated upstream
+ <!-- Nivigation bar for Dashboard -->
+ <nav class="navbar navbar-expand-lg bg-light">
   <!-- Nivigation bar for Dashboard -->
   <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
@@ -48,7 +49,6 @@
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
-=======
 <!-- Nivigation bar for Dashboard -->
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
@@ -62,40 +62,68 @@
           <a class="nav-link active" aria-current="page" href="./Main.html">Dashboard</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" onclick="ManageBuggers()">Add Bug</a>
           <a class="nav-link" href="./BugAdder.html">Add Bug</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"  onclick="manageUser()">Add User</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link"onclick="ResetDB()">resetDB</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./Login.html">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick="AddProject()">AddProject</a>
+        </li>
+      </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
->>>>>>> Stashed changes
     </div>
-  </nav>
-  <!-- End of navigation bar -->
+  </div>
+</nav>
   <section class="white-section">
     <div class="container-fluid">
           <h1 class="Main-Heading" style="text-align: center;">Welcome to the Team Optimize Dashboard</h1>
         <div class="row justify-content-center">
           <!-- Column 1 -->
           <div class="col-md-6 col-sm-12 colSec">
-            <form>
+            <form id="Bug-Form">
                 <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Bug Category</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                  <label for="summary" class="form-label">Bug summary</label>
+                  <input type="text" class="form-control" id="summary">
                 </div>
                 <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">Description</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1">
+                  <label for="Description" class="form-label">Bug Description</label>
+                  <input type="text" class="form-control" id="Description">
                 </div>
-                <div class="mb-3 form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                <div class="mb-3">
+                  <label for="PersonAssigned" class="form-label">Person assigned name</label>
+                  <input type="text" class="form-control" id="PersonAssigned">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="mb-3 form-floating">
+                  <select class="form-select" id ="RealOption" aria-label="Floating label select example">
+                  </select>
+                </div>
+                <div class="mb-3 form-floating">
+                  <select class="form-select" id="Status" aria-label="Floating label select example">
+                    <option value="Open">Open</option>
+                    <option value="Resolved">Resolved</option>
+                    <option value="Overdue">Overdue</option>
+                  </select>
+                </div>
+                <div class="mb-3 form-floating">
+                  <select class="form-select" id="Phase" aria-label="Floating label select example">
+                    <option value="Backlog">Backlog</option>
+                    <option value="Ready">Ready</option>
+                    <option value="Progress">In progress</option>
+                    <option value="Done">Done</option>
+                  </select>
+                </div>
+                <button type="submit" onclick="submit" id="BugButton" class="btn btn-primary">Submit</button>
               </form>
           </div>
         </div>

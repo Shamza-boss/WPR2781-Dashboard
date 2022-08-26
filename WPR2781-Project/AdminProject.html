@@ -23,6 +23,22 @@
       <div class="collapse navbar-collapse" id="navbarScroll">
         <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
           <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="./Main.html">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" onclick="ManageBuggers()">Add Bug</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  onclick="manageUser()">Add User</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"onclick="ResetDB()">resetDB</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./Login.html">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" onclick="AddProject()">AddProject</a>
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item">
@@ -53,6 +69,7 @@
   <section class="white-section">
     <div class="container-fluid">
           <h1 class="Main-Heading" style="text-align: center;">Welcome to the Team Optimize Dashboard</h1>
+  <button type="button" class="btn btn-primary" onclick="AddNewProject()">Add Project</button>
   <button type="button" class="btn btn-primary" onclick="AddProject()">Add Project</button>
   <br/>
   <br/>
@@ -62,6 +79,8 @@
          
           <th>Project Name</th>
           <th>Description</th>
+        </tr>
+        <tbody  id = "ProjectList"></tbody>
           
           <th>Edit</th>
           <th>Delete</th>
@@ -83,7 +102,6 @@
             <td><button type="button" name="edit" class="btn btn-primary">Edit</button></td>
           <td><button type="button" name="delete" class="btn btn-primary">Delete</button></td>
         </tr> -->
-       
       </table>
       </div>
       </section>

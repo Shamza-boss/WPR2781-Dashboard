@@ -6,9 +6,10 @@ body{
     background: #282929 !important;
     /* margin:0 auto; */
 }
-h1{
+h1,h2{
     color: #F4C915;
 }
+
 .white-section{
     /* padding: 5% 3% 5% 3%; */
     background: #282929;
@@ -19,6 +20,9 @@ h1{
     padding: 10px;
     width:20%;
     background: #DDEBF2;
+}
+#spc{
+    margin:5px;
 }
 form{
     background: #DDEBF2;

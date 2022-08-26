@@ -1,5 +1,4 @@
-<<<<<<< Updated upstream:WPR2781-Project/index.js
-=======
+
 //Need to retrieve all bugs that are stored in the database
 //now we can convert the item back into a jason object so we can use it
 let Database = JSON.parse(localStorage.getItem("Bugs"));
@@ -110,6 +109,7 @@ function manageUser(){
   let password = prompt("Enter your password");
   if(username != "admin" && password != "admin123"){
     alert("Sorry, you are not allowed to add users");
+    window.location.href = './Main.html';
     window.location.assign = './Main.html';
   }
   else if(username == "admin" && password == "admin123"){
@@ -117,5 +117,31 @@ function manageUser(){
     window.location.href = './UserManager.html';
   }
 }
+function AddProject(){
+  let username = prompt("Enter your username");
+  let password = prompt("Enter your password");
+  if(username != "admin" && password != "admin123"){
+    alert("Sorry, you are not allowed to add users");
+    window.location.href = './Main.html';
+  }
+  else if(username == "admin" && password == "admin123"){
+    alert("Welcome administrator!");
+    window.location.href = './AdminProject.html';
+  }
+}
 
->>>>>>> Stashed changes:WPR2781-Project/Main.js
+function ManageBuggers(){
+  let id = localStorage.getItem('userID');
+  if(id==null){
+    alert("Please Login");
+    window.location.href = './Login.html';
+  }
+  else{
+    window.location.href = './BugAdder.html';
+  }
+}
+
+function ResetDB(){
+  localStorage.clear();
+window.location.reload();
+}
