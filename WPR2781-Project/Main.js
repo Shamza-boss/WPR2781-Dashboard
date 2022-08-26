@@ -1,3 +1,4 @@
+
 //Need to retrieve all bugs that are stored in the database
 //now we can convert the item back into a jason object so we can use it
 let Database = JSON.parse(localStorage.getItem("Bugs"));
@@ -6,8 +7,6 @@ let ElementsBacklog = [];
 let ElementsReady = [];
 let ElementsProgress = [];
 let ElementsDone = [];
-let id = localStorage.getItem('userID');
-console.log(Database);
 Database.forEach((bug) => {
   if (bug.phase == "Backlog") {
     e = `
@@ -98,7 +97,12 @@ for(let i =0; i < ElementsProgress.length; i++) {
 for(let i =0; i < ElementsDone.length; i++) {
   document.getElementById("Done").appendChild(ElementsDone[i], document.body.childNodes[0]);
 }
+//console.log(Fragments[1]);
 
+// You can use native DOM methods to insert the fragment:
+// document
+//   .getElementById("BackLog")
+//   .appendChild(ElementsBacklog[0], document.body.childNodes[0]);
 
 function manageUser(){
   let username = prompt("Enter your username");
@@ -106,13 +110,13 @@ function manageUser(){
   if(username != "admin" && password != "admin123"){
     alert("Sorry, you are not allowed to add users");
     window.location.href = './Main.html';
+    window.location.assign = './Main.html';
   }
   else if(username == "admin" && password == "admin123"){
     alert("Welcome administrator!");
     window.location.href = './UserManager.html';
   }
 }
-
 function AddProject(){
   let username = prompt("Enter your username");
   let password = prompt("Enter your password");

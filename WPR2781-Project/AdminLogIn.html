@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="CustomStyling.css">
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <!-- The below link allows us to use font-awesome icon packs -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+    <!-- Nivigation bar for Dashboard -->
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar scroll</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarScroll">
+        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="./Main.html">Log-in</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./BugAdder.html">Add Bug</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  onclick="manageUser()">Add User</a>
+          </li>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+
+      </div>
+    </nav>
+    <!-- End of navigation bar -->
+
+    <section class="white-section">
+        <div class="container-fluid">
+              <h1 class="Main-Heading" style="text-align: center;">Welcome to the Team Optimize Dashboard</h1> <br>
+              <h2 class="Main-Heading" style="text-align: center";>Please enter your details to log in and verify that you are an admin. <br> 
+                If you ar a new user, please have an admin create your account.</h2> <br> <br>
+            <div class="row justify-content-center">
+              <!-- Column 1 -->
+              <div class="col-md-6 col-sm-12 colSec">
+                <form>
+                    <div class="mb-3">
+                      <label for="UserFullName" class="form-label">Full name</label>
+                      <input type="text" class="form-control" id="UserFullName" aria-describedby="NameAndSurname">
+                      <div id="NameAndSurname" class="form-text">Please enter your name and surname</div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="Username" class="form-label">Username</label>
+                      <input type="text" class="form-control" id="Username" aria-describedby="UNdesc">
+                      <div id="UNdesc" class="form-text">This is your registered username</div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="AdminPassword" class="form-label">Password</label>
+                      <input type="password" class="form-control" id="AdminPassword" aria-describedby="protected">
+                      <div id="protected" class="form-text">This is your private password</div>
+                    </div>
+                
+                    <button type="submit" class="btn btn-primary">Log in</button>
+                  </form>
+              </div>
+            </div>
+          </div>
+      </section>
+</body>
+</html>
