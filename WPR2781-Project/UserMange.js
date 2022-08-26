@@ -1,4 +1,3 @@
-
 let id = localStorage.getItem('userID');
 function getNewUserId(name, suname, username){
     userBase = JSON.parse(localStorage.getItem('userBase'));
@@ -75,7 +74,6 @@ function manageUser(){
     if(username != "admin" && password != "admin123"){
       alert("Sorry, you are not allowed to add users");
       window.location.href = './Main.html';
-      window.location.assign = './Main.html';
     }
     else if(username == "admin" && password == "admin123"){
       alert("Welcome administrator!");
