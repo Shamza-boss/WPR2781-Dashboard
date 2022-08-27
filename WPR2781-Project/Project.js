@@ -24,6 +24,7 @@ function AddNewProject(){
     }        
     
 }
+
 function renderProjects(){
     Data = JSON.parse(localStorage.getItem('Projects'));
     console.log(Data);
@@ -36,16 +37,25 @@ for(let i=0; i<Data.length; i++){
     });
     document.getElementById('ProjectList').innerHTML = html;
 }
+
 function ManageBuggers(){
-  if(id==null){
+  let id = localStorage.getItem('userID');
+  let projects = localStorage.getItem('Projects');
+  let users = localStorage.getItem('userBase');
+  if(projects==null){
+    alert("Please ask admin to input projects in order to continue");
+    window.location.href = './Main.html';
+  }else if(users==null&&id==null){
+    alert("Please ask admin to input Users in order to continue");
+    window.location.href = './Main.html';
+  }else if(id==null&&users!=null){
     alert("Please Login");
     window.location.href = './Login.html';
-  }
-  else{
+  }else{
     window.location.href = './BugAdder.html';
   }
 }
-//why
+
 function manageUser(){
     let username = prompt("Enter your username");
     let password = prompt("Enter your password");
@@ -58,6 +68,7 @@ function manageUser(){
       window.location.href = './UserManager.html';
     }
   }
+
   function AddProject(){
     let username = prompt("Enter your username");
     let password = prompt("Enter your password");
@@ -69,5 +80,10 @@ function manageUser(){
       alert("Welcome administrator!");
       window.location.href = './AdminProject.html';
     }
+  }
+
+  function ResetDB(){
+    localStorage.clear();
+  window.location.reload();
   }
  renderProjects();

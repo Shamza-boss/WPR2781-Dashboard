@@ -15,17 +15,17 @@
  <!-- Nivigation bar for Dashboard -->
  <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar scroll</a>
+    <a class="navbar-brand" href="#">Team Optimize</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarScroll">
       <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="./Main.html">Dashboard</a>
+          <a class="nav-link"  href="./Main.html">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" onclick="ManageBuggers()">Add Bug</a>
+          <a class="nav-link  active" aria-current="page" onclick="ManageBuggers()">Add Bug</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"  onclick="manageUser()">Add User</a>
@@ -63,27 +63,45 @@
                   <input type="text" class="form-control" id="Description">
                 </div>
                 <div class="mb-3">
-                  <label for="PersonAssigned" class="form-label">Person assigned name</label>
-                  <input type="text" class="form-control" id="PersonAssigned">
+                  <label for="PersonAssigned" class="form-label">Pick Assigned person</label>
+                  <select class="form-select" id ="PersonAssigned" aria-label="Floating label select example"></select>
                 </div>
-                <div class="mb-3 form-floating">
+                <div class="mb-3">
+                  <label for="RealOption" class="form-label">Pick a project</label>
                   <select class="form-select" id ="RealOption" aria-label="Floating label select example">
                   </select>
                 </div>
-                <div class="mb-3 form-floating">
+                <div class="mb-3">
+                  <label for="Status" class="form-label">Pick Status</label>
                   <select class="form-select" id="Status" aria-label="Floating label select example">
                     <option value="Open">Open</option>
                     <option value="Resolved">Resolved</option>
                     <option value="Overdue">Overdue</option>
                   </select>
                 </div>
-                <div class="mb-3 form-floating">
+                <div class="mb-3">
+                  <label for="Status" class="form-label">Serverity</label>
+                  <select class="form-select" id="Serverity" aria-label="Floating label select example">
+                    <option value="low">Low</option>
+                    <option value="medium">medium</option>
+                    <option value="high">high</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="Phase" class="form-label">Pick a phase</label>
                   <select class="form-select" id="Phase" aria-label="Floating label select example">
                     <option value="Backlog">Backlog</option>
                     <option value="Ready">Ready</option>
                     <option value="Progress">In progress</option>
                     <option value="Done">Done</option>
                   </select>
+                </div>
+                <div class="mb-3">
+                  <label for="DetailedSummary" class="form-label"></label>
+                  <div class="form-group">
+                    <label for="comment">Detailed Description</label>
+                    <textarea class="form-control" rows="5" id="DetailedSummary"></textarea>
+                  </div>
                 </div>
                 <button type="submit" onclick="submit" id="BugButton" class="btn btn-primary">Submit</button>
               </form>

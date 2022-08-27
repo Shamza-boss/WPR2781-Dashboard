@@ -15,11 +15,12 @@ h1,h2{
     background: #282929;
 }
 .colSec{
-    margin:5px;
+    /* margin:5px; */
     border-radius: 5px;
-    padding: 10px;
-    width:20%;
+    padding: 2%;
+    /* width:20%; */
     background: #DDEBF2;
+    text-align: center;
 }
 #spc{
     margin:5px;
@@ -34,6 +35,19 @@ form{
     text-align: center !important;
     padding: 0!important;
 }
+.plus:hover{
+    text-align: center !important;
+    padding: 0!important;
+    box-shadow: 10px 10px 5px lightblue;
+    border-radius: 5px!important;
+    cursor: pointer;
+}
 .h1c{
     margin-bottom: 4%;
+}
+li{
+    cursor: pointer;
+}
+.Outer{
+    margin-bottom: 4% !important;
 }

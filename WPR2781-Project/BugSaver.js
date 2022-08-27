@@ -1,16 +1,5 @@
-//Information we need to save the
-// + means complete
-/*
-- Issue summary +
-- Issue description +
-- User id to know who created issues - temporaryID created (Revision needed)
-- Date of issue identified +
-- Project that issue is related to + (Placeholder)
-- Who the issue is assigned to + (Placeholder) +
-- Status of the issue [open/resolved/overdue] +
-*/
 
-let date = new Date();//date of issue
+let date = new Date().toISOString().slice(0, 10);
 let Database = JSON.parse(localStorage.getItem("Bugs"));
 let Bugs = []
 if(Database!=null){
@@ -27,7 +16,6 @@ if(id==null){
   BugForm.addEventListener("submit", handleSubmit);
   
   function handleSubmit(event) {
-    //preventDefault prevents auto reloading
     event.preventDefault();
       var data = new FormData(event.target);
   
@@ -37,6 +25,10 @@ if(id==null){
       data.append("PersonAssigned", document.getElementById("PersonAssigned").value);
       data.append("Status", document.getElementById("Status").value);
       data.append("Phase", document.getElementById("Phase").value);
+      data.append("Serverity", document.getElementById("Serverity").value);
+      data.append("DetailedSummary", document.getElementById("DetailedSummary").value);
+
+
   
       let value = [...data.entries()];
       let summary = value[0][1];
@@ -45,8 +37,10 @@ if(id==null){
       let personAssigned = value[3][1];
       let status = value[4][1];
       let phase = value[5][1];
+      let Serverity = value[6][1];
+      let DetailedSummary = value[7][1];
   
-      function DataBaseBugs(id,summary,description, date, project,PersonAssigned,Status, phase){
+      function DataBaseBugs(id,summary,description, date, project,PersonAssigned,Status, phase, Serverity, DetailedSummary){
         this.id = id;
         this.summary = summary;
         this.description = description;
@@ -55,14 +49,17 @@ if(id==null){
         this.PersonAssigned = PersonAssigned;
         this.Status = Status;
         this.phase = phase;
+        this.Serverity = Serverity;
+        this.DetailedSummary = DetailedSummary;
      }
      if(summary!=null||description!=null||projectName!=null||personAssigned!=null||status!=null||phase!=null){
       let userId = id;
       if(userId!=null||userId!=" "){
-        let bug = new DataBaseBugs(userId,summary,description, date, projectName, personAssigned, status, phase);
+        let bug = new DataBaseBugs(userId,summary,description, date, projectName, personAssigned, status, phase, Serverity, DetailedSummary);
    
         Bugs.push(bug);//add bug to array that is to be saved
         localStorage.setItem("Vals", JSON.stringify(Bugs));
+        alert("Bug added")
       }else{
         alert("Sorry, you are not logged in");
         window.location.href = './Main.html';
@@ -70,34 +67,66 @@ if(id==null){
       
      }
      localStorage.DataBase = localStorage.setItem("Bugs", JSON.stringify(Bugs));
+     window.location.href = './Main.html';
   }
 }
 
 
 function renderProjects(){
+  userBase = JSON.parse(localStorage.getItem('userBase'));
+  console.log(userBase);
   Data = JSON.parse(localStorage.getItem('Projects'));
-  console.log(Data);
-  let OptionARR = [];
-for(let i=0; i<Data.length; i++){
-  let html = "<option value="+Data[i].projectName+">"+Data[i].projectName+"</option>";
-  let options = document.createElement('Option');
-  options.innerHTML = html;
-  OptionARR.push(options);
-}
-  let select = document.getElementById('RealOption');
-  OptionARR.forEach(element =>{
-    select.appendChild(element);
-  })
+  if(userBase==null){
+    alert("there are now existing users in the project");
+    window.location.href = './Main.html';
+  }
+  if(Data==null){
+    alert("Please ask admin to input projects in order to continue");
+    window.location.href = './Main.html';
+  }else{
+    console.log(Data);
+    let OptionARR = [];
+    let personArry = [];
+  for(let i=0; i<Data.length; i++){
+    let html = "<option value="+Data[i].projectName+">"+Data[i].projectName+"</option>";
+    let options = document.createElement('Option');
+    options.innerHTML = html;
+    OptionARR.push(options);
+  }
+  for(let i=0; i<userBase.length; i++){
+    let html = "<option value="+userBase[i].name+">"+userBase[i].name+"</option>";
+    let options = document.createElement('Option');
+    options.innerHTML = html;
+    personArry.push(options);
+  }
+    let select = document.getElementById('RealOption');
+    OptionARR.forEach(element =>{
+      console.log(element);
+      select.appendChild(element);
+    })
+    let select1 = document.getElementById('PersonAssigned');
+    personArry.forEach(element =>{
+      select1.appendChild(element);
+    })
+  }
+  
   
 }
 
 function ManageBuggers(){
   let id = localStorage.getItem('userID');
-  if(id==null){
+  let projects = localStorage.getItem('Projects');
+  let users = localStorage.getItem('userBase');
+  if(projects==null){
+    alert("Please ask admin to input projects in order to continue");
+    window.location.href = './Main.html';
+  }else if(users==null&&id==null){
+    alert("Please ask admin to input Users in order to continue");
+    window.location.href = './Main.html';
+  }else if(id==null&&users!=null){
     alert("Please Login");
     window.location.href = './Login.html';
-  }
-  else{
+  }else{
     window.location.href = './BugAdder.html';
   }
 }
@@ -125,4 +154,8 @@ function AddProject(){
     alert("Welcome administrator!");
     window.location.href = './AdminProject.html';
   }
+}
+function ResetDB(){
+  localStorage.clear();
+window.location.reload();
 }

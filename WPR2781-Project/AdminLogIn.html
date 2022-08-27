@@ -13,31 +13,41 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
 <body>
-    <!-- Nivigation bar for Dashboard -->
-<nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar scroll</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarScroll">
-        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="./Main.html">Log-in</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./BugAdder.html">Add Bug</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link"  onclick="manageUser()">Add User</a>
-          </li>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-
-      </div>
-    </nav>
+ <!-- Nivigation bar for Dashboard -->
+ <nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Team Optimize</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item">
+          <a class="nav-link"  href="./Main.html">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick="ManageBuggers()">Add Bug</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-linka active" aria-current="page" onclick="manageUser()">Add User</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"onclick="ResetDB()">resetDB</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./Login.html">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick="AddProject()">AddProject</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
     <!-- End of navigation bar -->
 
     <section class="white-section">

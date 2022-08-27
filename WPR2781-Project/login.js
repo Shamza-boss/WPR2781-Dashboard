@@ -35,21 +35,28 @@ console.log("This is the ID: " + id);
             }
         }) 
         if (userExist==false){
-            alert("You have not been registerd or your details were incorrect");
-            window.location.href = './BugAdder.html';
+            alert("You have not been registerd or your details were incorrect. Contact Admin.");
+            window.location.href = './Main.html';
         }
       }
 }
 function ManageBuggers(){
-    let id = localStorage.getItem('userID');
-    if(id==null){
-      alert("Please Login");
-      window.location.href = './Login.html';
-    }
-    else{
-      window.location.href = './BugAdder.html';
-    }
+  let id = localStorage.getItem('userID');
+  let projects = localStorage.getItem('Projects');
+  let users = localStorage.getItem('userBase');
+  if(projects==null){
+    alert("Please ask admin to input projects in order to continue");
+    window.location.href = './Main.html';
+  }else if(users==null&&id==null){
+    alert("Please ask admin to input Users in order to continue");
+    window.location.href = './Main.html';
+  }else if(id==null&&users!=null){
+    alert("Please Login");
+    window.location.href = './Login.html';
+  }else{
+    window.location.href = './BugAdder.html';
   }
+}
 
 function manageUser(){
   let username = prompt("Enter your username");
@@ -75,4 +82,8 @@ function AddProject(){
     alert("Welcome administrator!");
     window.location.href = './AdminProject.html';
   }
+}
+function ResetDB(){
+  localStorage.clear();
+window.location.reload();
 }
