@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Page</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="CustomStyling.css">
     <script src="bootstrap/js/bootstrap.js"></script>
     <!-- The below link allows us to use font-awesome icon packs -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <title>Bug-Dashboard</title>
 </head>
 <body>
-  <!-- Nivigation bar for Dashboard -->
-  <nav class="navbar navbar-expand-lg bg-light">
+   <!-- Nivigation bar for Dashboard -->
+   <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Team Optimize</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,7 +23,7 @@
       <div class="collapse navbar-collapse" id="navbarScroll">
         <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
           <li class="nav-item">
-            <a class="nav-link"  href="./Main.html">Dashboard</a>
+            <a class="nav-link active" aria-current="page" href="./Main.html">Dashboard</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" onclick="ManageBuggers()">Add Bug</a>
@@ -34,7 +35,7 @@
             <a class="nav-link"onclick="ResetDB()">resetDB</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="./Login.html">Login</a>
+            <a class="nav-link" href="./Login.html">Login</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" onclick="AddProject()">AddProject</a>
@@ -47,36 +48,30 @@
       </div>
     </div>
   </nav>
-    <!-- End of navigation bar -->
-
-    <section class="white-section">
-        <div class="container-fluid">
-              <h1 class="Main-Heading" style="text-align: center;">Welcome to the Team Optimize Dashboard</h1>
-            <div class="row justify-content-center">
-              <div class="col-md-6 col-sm-12 colSec">
-                <form id="LoginForm form">
-                    <div class="mb-3">
-                      <label for="UserFullName" class="form-label">Full name</label>
-                      <input type="text" class="form-control" id="UserFullName" aria-describedby="NameAndSurname">
-                      <div id="NameAndSurname" class="form-text">Please enter your name and surname</div>
-                    </div>
-                    <div class="mb-3">
-                      <label for="Username" class="form-label">Username</label>
-                      <input type="text" class="form-control" id="Username" aria-describedby="UNdesc">
-                      <div id="UNdesc" class="form-text">This is your registered username</div>
-                    </div>
-                    <div class="mb-3">
-                      <label for="password" class="form-label">Password</label>
-                      <input type="password" class="form-control" id="password" aria-describedby="protected">
-                      <div id="protected" class="form-text">This is your private password</div>
-                    </div>
-                
-                    <button type="submit" onclick="submit" class="btn btn-primary">Log in</button>
-                  </form>
+  <!-- End of navigation bar -->
+  <section class="white-section">
+    <div class="container-fluid">
+          <h1 class="Main-Heading" style="text-align: center;">Welcome to the Team Optimize Dashboard</h1>
+        <div class="row justify-content-center">
+          <!-- Column 1 -->
+          <div class="col-lg-9  Outer">
+            <div class="col-md-12 colSec">
+              <h4 class="Main-Heading">Detailed input</h4>
+              <div class="row">
+                <div class="card h1c">
+                  <div class="card-body plus" onclick="ManageBuggers()">
+                    <p class="card-text"><a onclick="ManageBuggers()"><i class="fa-solid fa-plus"></i></a></p>
+                  </div>
+                </div>
+                <div id="BackLog" >
+                </div>
               </div>
             </div>
           </div>
-      </section>
-      <script src="./login.js"></script>
+        </div>
+      </div>
+  </section>
 </body>
+
+<script src="Done.js"></script>
 </html>

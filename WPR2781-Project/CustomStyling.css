@@ -25,7 +25,10 @@ h1,h2{
 #spc{
     margin:5px;
 }
-form{
+#spc:hover{
+    cursor: pointer;
+}
+.form{
     background: #DDEBF2;
 }
 .card{
@@ -50,4 +53,10 @@ li{
 }
 .Outer{
     margin-bottom: 4% !important;
+}
+.filter{
+    text-align: center !important;
+    background-color: none !important;
+    background: none !important;
+    align-items: center !important;
 }

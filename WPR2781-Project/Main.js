@@ -1,138 +1,188 @@
-let Database = JSON.parse(localStorage.getItem("Bugs"));
+let Bugs = JSON.parse(localStorage.getItem("Bugs"));
 let USERS = JSON.parse(localStorage.getItem("userBase"));
+let FilterBase = JSON.parse(localStorage.getItem("FilterBase"));
+// if(FilterBase.length!=Bugs.length){
+//   localStorage.setItem("FilterBase", JSON.stringify(Bugs));
+// }
+// FilterBase = JSON.parse(localStorage.getItem("FilterBase"));
+// console.log(Bugs)
 
+
+
+//filer box populated with Projects
+renderProjects();
 let ElementsBacklog = [];
-let ElementsReady = [];
-let ElementsProgress = [];
-let ElementsDone = [];
-let id = localStorage.getItem("userID");
-console.log(Database);
-Database.forEach((bug, i) => {
-  if (bug.phase == "Backlog") {
-    let usernames = [];
-    USERS.forEach((user) => {
-      if (user.id == bug.id) {
-        usernames.push(user.username);
+  let ElementsReady = [];
+  let ElementsProgress = [];
+  let ElementsDone = [];
+
+let renderCards = (Database)=>{
+  
+  let id = localStorage.getItem("userID");
+  //console.log(Database);
+  let allUsers = [];
+  Database.forEach((bug, i) => {
+    //users with index
+    allUsers.push({ i: bug });
+    if (bug.phase == "Backlog") {
+      let usernames = [];
+      let Backlogbugs = [];
+      console.log("Usernames: "+usernames);
+      USERS.forEach((user) => {
+        if (user.id == bug.id) {
+          usernames.push(user.username);
+        }
+      });
+      let color = "";
+      if (bug.Serverity === "high") {
+        color = "red";
+      } else if (bug.Serverity === "medium") {
+        color = "orange";
+      } else if (bug.Serverity === "low") {
+        color = "blue";
       }
-    });
-    let color = "";
-    if (bug.Serverity === "high") {
-      color = "red";
-    } else if (bug.Serverity === "medium") {
-      color = "orange";
-    } else if (bug.Serverity === "low") {
-      color = "blue";
+      e =
+        `
+      <div class="card" id="spc" onclick="BackLogSub()">
+      <div class="card-body">
+      <h5 class="card-title">${bug.projectName} : ${bug.summary}</h5>
+      <h6 class="card-subtitle mb-2 text-muted"> Date: ${bug.date}</h6>
+      <p class="card-text">${bug.description}</p>
+      <p class="card-text" style="color: ${color}">Severity: ${bug.Serverity}</p>
+      <p class="card-text""> Status: ${bug.Status} - Assigned: ` +
+        bug.PersonAssigned +
+        `</p>
+      </div></div>`;
+      console.log(bug);
+      ElementsBacklog.push(createCard(e));
+      Database.forEach(bug =>{
+        if(bug.phase == "Backlog"){
+          Backlogbugs.push(bug);
+        }
+      })
+      localStorage.setItem("Backlog", JSON.stringify(Backlogbugs));
     }
-    e =
-      `
-    <div class="card" id="spc">
-    <div class="card-body">
-    <h5 class="card-title">${bug.projectName} : ${bug.summary}</h5>
-    <h6 class="card-subtitle mb-2 text-muted"> Date: ${bug.date} - <a href="#" class="card-link">Full Details</a></h6>
-    <p class="card-text">${bug.description}</p>
-    <!-- These can be made to be like the buttons -->
-    <p class="card-text" style="color: ${color}">Severity: ${bug.Serverity}</p>
-    <p class="card-text""> Status: ${bug.Status} - User: ` +
-      usernames[i] +
-      `</p>
-    </div></div>`;
-    console.log(bug);
-    ElementsBacklog.push(createCard(e));
-  }
-  if (bug.phase == "Ready") {
-    let usernames = [];
-    USERS.forEach((user) => {
-      if (user.id == bug.id) {
-        usernames.push(user.username);
+    if (bug.phase == "Ready") {
+      let usernames = [];
+      let ReadyBugs = [];
+      USERS.forEach((user) => {
+        if (user.id == bug.id) {
+          usernames.push(user.username);
+        }
+      });
+      let color = "";
+      if (bug.Serverity === "high") {
+        color = "red";
+      } else if (bug.Serverity === "medium") {
+        color = "orange";
+      } else if (bug.Serverity === "low") {
+        color = "blue";
       }
-    });
-    let color = "";
-    if (bug.Serverity === "high") {
-      color = "red";
-    } else if (bug.Serverity === "medium") {
-      color = "orange";
-    } else if (bug.Serverity === "low") {
-      color = "blue";
+      e =
+        `
+      <div class="card" id="spc" onclick="ReadyLogSub()">
+      <div class="card-body">
+      <h5 class="card-title">${bug.projectName} : ${bug.summary}</h5>
+      <h6 class="card-subtitle mb-2 text-muted"> Date: ${bug.date}</h6>
+      <p class="card-text">${bug.description}</p>
+      <p class="card-text" style="color: ${color}">Severity: ${bug.Serverity}</p>
+      <p class="card-text""> Status: ${bug.Status} - Assigned: ` +
+      bug.PersonAssigned +
+        `</p>
+      </div></div>`;
+      console.log(bug);
+      Database.forEach(bug =>{
+        if(bug.phase == "Ready"){
+          ReadyBugs.push(bug);
+        }
+      })
+      ElementsReady.push(createCard(e));
+      
+      localStorage.setItem("Ready", JSON.stringify(ReadyBugs));
     }
-    e =
-      `
-    <div class="card" id="spc">
-    <div class="card-body">
-    <h5 class="card-title">${bug.projectName} : ${bug.summary}</h5>
-    <h6 class="card-subtitle mb-2 text-muted"> Date: ${bug.date} - <a href="#" class="card-link">Full Details</a></h6>
-    <p class="card-text">${bug.description}</p>
-    <!-- These can be made to be like the buttons -->
-    <p class="card-text" style="color: ${color}">Severity: ${bug.Serverity}</p>
-    <p class="card-text""> Status: ${bug.Status} - User: ` +
-      usernames[i] +
-      `</p>
-    </div></div>`;
-    console.log(bug);
-    ElementsReady.push(createCard(e));
-  }
-  if (bug.phase == "Progress") {
-    let usernames = [];
-    USERS.forEach((user) => {
-      if (user.id == bug.id) {
-        usernames.push(user.username);
+    if (bug.phase == "Progress") {
+      let usernames = [];
+      let ProgressBugs = [];
+      USERS.forEach((user) => {
+        if (user.id == bug.id) {
+          usernames.push(user.username);
+        }
+      });
+      let color = "";
+      if (bug.Serverity === "high") {
+        color = "red";
+      } else if (bug.Serverity === "medium") {
+        color = "orange";
+      } else if (bug.Serverity === "low") {
+        color = "blue";
       }
-    });
-    let color = "";
-    if (bug.Serverity === "high") {
-      color = "red";
-    } else if (bug.Serverity === "medium") {
-      color = "orange";
-    } else if (bug.Serverity === "low") {
-      color = "blue";
+      e =
+        `
+      <div class="card" id="spc" onclick="ProgressLogSub()">
+      <div class="card-body">
+      <h5 class="card-title">${bug.projectName} : ${bug.summary}</h5>
+      <h6 class="card-subtitle mb-2 text-muted"> Date: ${bug.date}</h6>
+      <p class="card-text">${bug.description}</p>
+      <p class="card-text" style="color: ${color}">Severity: ${bug.Serverity}</p>
+      <p class="card-text""> Status: ${bug.Status} - Assigned: ` +
+      bug.PersonAssigned +
+        `</p>
+      </div></div>`;
+      Database.forEach(bug =>{
+        if(bug.phase == "Progress"){
+          ProgressBugs.push(bug);
+        }
+      })      
+      ElementsProgress.push(createCard(e));
+      localStorage.setItem("Progress", JSON.stringify(ProgressBugs));
     }
-    e =
-      `
-    <div class="card" id="spc">
-    <div class="card-body">
-    <h5 class="card-title">${bug.projectName} : ${bug.summary}</h5>
-    <h6 class="card-subtitle mb-2 text-muted"> Date: ${bug.date} - <a href="#" class="card-link">Full Details</a></h6>
-    <p class="card-text">${bug.description}</p>
-    <!-- These can be made to be like the buttons -->
-    <p class="card-text" style="color: ${color}">Severity: ${bug.Serverity}</p>
-    <p class="card-text""> Status: ${bug.Status} - User: ` +
-      usernames[i] +
-      `</p>
-    </div></div>`;
-    console.log(bug);
-    ElementsProgress.push(createCard(e));
-  }
-  if (bug.phase == "Done") {
-    let usernames = [];
-    USERS.forEach((user) => {
-      if (user.id == bug.id) {
-        usernames.push(user.username);
+    if (bug.phase == "Done") {
+      let usernames = [];
+      let DoneBugs = []
+      USERS.forEach((user) => {
+        if (user.id == bug.id) {
+          usernames.push(user.username);
+        }
+      });
+      let color = "";
+      if (bug.Serverity === "high") {
+        color = "red";
+      } else if (bug.Serverity === "medium") {
+        color = "orange";
+      } else if (bug.Serverity === "low") {
+        color = "blue";
       }
-    });
-    let color = "";
-    if (bug.Serverity === "high") {
-      color = "red";
-    } else if (bug.Serverity === "medium") {
-      color = "orange";
-    } else if (bug.Serverity === "low") {
-      color = "blue";
+      e =
+        `
+      <div class="card" id="spc" onclick="DoneLogSub()">
+      <div class="card-body">
+      <h5 class="card-title">${bug.projectName} : ${bug.summary}</h5>
+      <h6 class="card-subtitle mb-2 text-muted"> Date: ${bug.date}</h6>
+      <p class="card-text">${bug.description}</p>
+      <p class="card-text" style="color: ${color}">Severity: ${bug.Serverity}</p>
+      <p class="card-text""> Status: ${bug.Status} - Assigned: ` +
+      bug.PersonAssigned +
+        `</p>
+      </div></div>`;
+      
+      Database.forEach(bug =>{
+        if(bug.phase == "Done"){
+          DoneBugs.push(bug);
+        }
+      })
+      ElementsDone.push(createCard(e));
+      localStorage.setItem("Done", JSON.stringify(DoneBugs))
     }
-    e =
-      `
-    <div class="card" id="spc">
-    <div class="card-body">
-    <h5 class="card-title">${bug.projectName} : ${bug.summary}</h5>
-    <h6 class="card-subtitle mb-2 text-muted"> Date: ${bug.date} - <a href="#" class="card-link">Full Details</a></h6>
-    <p class="card-text">${bug.description}</p>
-    <!-- These can be made to be like the buttons -->
-    <p class="card-text" style="color: ${color}">Severity: ${bug.Serverity}</p>
-    <p class="card-text""> Status: ${bug.Status} - User: ` +
-      usernames[i] +
-      `</p>
-    </div></div>`;
-    console.log(bug);
-    ElementsDone.push(createCard(e));
-  }
-});
+  });
+}
+
+console.log(FilterBase);
+if(FilterBase===null){
+  renderCards(Bugs);
+}else if(FilterBase.length>=1){
+  renderCards(FilterBase);
+} 
+
 
 function createCard(htmlStr) {
   var frag = document.createDocumentFragment(),
@@ -209,4 +259,82 @@ function ManageBuggers() {
 function ResetDB() {
   localStorage.clear();
   window.location.reload();
+}
+function renderProjects() {
+  Data = JSON.parse(localStorage.getItem("Projects"));
+  console.log(Data);
+  let OptionARR = [];
+  for (let i = 0; i < Data.length; i++) {
+    if (i == 0) {
+      let html =
+        '<option value="all">All Bugs in projects</option>'
+      let options = document.createElement("Option");
+      options.innerHTML = html;
+      OptionARR.push(options);
+    }if(i == 0){
+      let html ='<option value="'+Data[0].projectName +'">' +Data[0].projectName +'</option>';
+      let options = document.createElement("Option");
+      options.innerHTML = html;
+      OptionARR.push(options);
+    } else if (i > 0) {
+      let html =
+        "<option value=" +
+        Data[i].projectName +
+        ">" +
+        Data[i].projectName +
+        "</option>";
+      let options = document.createElement("Option");
+      options.innerHTML = html;
+      OptionARR.push(options);
+    }
+  }
+  let select = document.getElementById("FilterValue");
+  OptionARR.forEach((element) => {
+    console.log(element);
+    select.appendChild(element);
+  });
+}
+
+const FilterForm = document.getElementById("Filter-form");
+FilterForm.addEventListener("submit", handleSubmit);
+
+function handleSubmit(event) {
+  event.preventDefault();
+  var data = new FormData(event.target);
+  let Bugs = JSON.parse(localStorage.getItem("Bugs"));
+
+  data.append("FilterValue", document.getElementById("FilterValue").value);
+
+  let value = [...data.entries()];
+  let FilterValue = value[0][1];
+let FilterData = [];
+  if(FilterValue==="All Bugs in projects"){
+    Bugs.forEach(bug =>{
+        FilterData.push(bug);
+    })
+      localStorage.setItem("FilterBase", JSON.stringify(Bugs));
+    
+  }
+  else{
+    Bugs.forEach(bug =>{
+      if(bug.projectName==FilterValue){
+        FilterData.push(bug)
+      }
+    })
+    localStorage.setItem("FilterBase", JSON.stringify(FilterData));
+  }
+  window.location.href = "./Main.html";
+}
+
+function DoneLogSub(){
+  window.location.href = "./Done.html";
+}
+function ProgressLogSub(){
+  window.location.href = "./Progress.html";
+}
+function ReadyLogSub(){
+  window.location.href = "./Ready.html";
+}
+function BackLogSub(){
+  window.location.href = "./BackLog.html";
 }
