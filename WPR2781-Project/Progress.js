@@ -29,18 +29,19 @@ Database.forEach((bug, i) => {
       color = "blue";
     }
     e =
-    `
-    <div class="card" id="spc">
-    <div class="card-body">
-    <h5 class="card-title">${bug.projectName} : ${bug.summary}</h5>
-    <h6 class="card-subtitle mb-2 text-muted"> Date: ${bug.date} - Description ${bug.description} <br/></h6>
-    <p class="card-text"> ${bug.DetailedSummary}</p>
-    <!-- These can be made to be like the buttons -->
-    <p class="card-text" style="color: ${color}">Severity: ${bug.Serverity}</p>
-    <p class="card-text""> Status: ${bug.Status} - Assigned: ` +
-    bug.PersonAssigned +
-    `</p>
-    </div></div>`;
+      `
+      <div class="card">
+      <div class="card-body">
+      <h5 class="card-title">${bug.projectName} : ${bug.summary}</h5>
+      <h6 class="card-subtitle mb-2 text-muted"> Date submited: ${bug.date} - Projected Date: ${bug.ProjectedTime}</h6>
+      <p class="card-text"> Description ${bug.description}</p>
+      <p class="card-text"> ${bug.DetailedSummary}</p>
+      <!-- These can be made to be like the buttons -->
+      <p class="card-text" style="color: ${color}">Severity: ${bug.Serverity}</p>
+      <p class="card-text""> Status: ${bug.Status} - Assigned: ` +
+      bug.PersonAssigned +
+      `</p>
+      </div></div>`;
     ElementsBacklog.push(createCard(e));
   }
 });

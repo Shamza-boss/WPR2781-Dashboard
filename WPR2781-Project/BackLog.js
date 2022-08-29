@@ -31,10 +31,11 @@ Database.forEach((bug, i) => {
     }
     e =
       `
-      <div class="card">
+      <div class="card" >
       <div class="card-body">
       <h5 class="card-title">${bug.projectName} : ${bug.summary}</h5>
-      <h6 class="card-subtitle mb-2 text-muted"> Date: ${bug.date} - Description ${bug.description} <br/></h6>
+      <h6 class="card-subtitle mb-2 text-muted"> Date submited: ${bug.date} - Projected Date: ${bug.ProjectedTime}</h6>
+      <p class="card-text"> Description ${bug.description}</p>
       <p class="card-text"> ${bug.DetailedSummary}</p>
       <!-- These can be made to be like the buttons -->
       <p class="card-text" style="color: ${color}">Severity: ${bug.Serverity}</p>

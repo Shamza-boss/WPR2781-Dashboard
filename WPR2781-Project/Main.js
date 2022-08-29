@@ -42,17 +42,16 @@ let renderCards = (Database)=>{
         color = "blue";
       }
       e =
-        `
-      <div class="card" id="spc" onclick="BackLogSub()">
-      <div class="card-body">
-      <h5 class="card-title">${bug.projectName} : ${bug.summary}</h5>
-      <h6 class="card-subtitle mb-2 text-muted"> Date: ${bug.date}</h6>
-      <p class="card-text">${bug.description}</p>
-      <p class="card-text" style="color: ${color}">Severity: ${bug.Serverity}</p>
-      <p class="card-text""> Status: ${bug.Status} - Assigned: ` +
-        bug.PersonAssigned +
-        `</p>
-      </div></div>`;
+      `
+    <div class="card" id="spc" onclick="BackLogSub()" title="Click to see more details">
+    <div class="card-body">
+    <h5 class="card-title">${bug.projectName}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Assigned: ` +
+    bug.PersonAssigned +
+      `</h6>
+    <p class="card-text">Summary: ${bug.summary}</p>
+    <p class="card-text" style="color: ${color}">Severity: ${bug.Serverity}</p>
+    </div></div>`;
       console.log(bug);
       ElementsBacklog.push(createCard(e));
       Database.forEach(bug =>{
@@ -79,17 +78,16 @@ let renderCards = (Database)=>{
         color = "blue";
       }
       e =
-        `
-      <div class="card" id="spc" onclick="ReadyLogSub()">
-      <div class="card-body">
-      <h5 class="card-title">${bug.projectName} : ${bug.summary}</h5>
-      <h6 class="card-subtitle mb-2 text-muted"> Date: ${bug.date}</h6>
-      <p class="card-text">${bug.description}</p>
-      <p class="card-text" style="color: ${color}">Severity: ${bug.Serverity}</p>
-      <p class="card-text""> Status: ${bug.Status} - Assigned: ` +
-      bug.PersonAssigned +
-        `</p>
-      </div></div>`;
+      `
+    <div class="card" id="spc" onclick="ReadyLogSub() title="Click to see more details"">
+    <div class="card-body">
+    <h5 class="card-title">${bug.projectName}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Assigned: ` +
+    bug.PersonAssigned +
+      `</h6>
+    <p class="card-text">Summary: ${bug.summary}</p>
+    <p class="card-text" style="color: ${color}">Severity: ${bug.Serverity}</p>
+    </div></div>`;
       console.log(bug);
       Database.forEach(bug =>{
         if(bug.phase == "Ready"){
@@ -117,17 +115,16 @@ let renderCards = (Database)=>{
         color = "blue";
       }
       e =
-        `
-      <div class="card" id="spc" onclick="ProgressLogSub()">
-      <div class="card-body">
-      <h5 class="card-title">${bug.projectName} : ${bug.summary}</h5>
-      <h6 class="card-subtitle mb-2 text-muted"> Date: ${bug.date}</h6>
-      <p class="card-text">${bug.description}</p>
-      <p class="card-text" style="color: ${color}">Severity: ${bug.Serverity}</p>
-      <p class="card-text""> Status: ${bug.Status} - Assigned: ` +
-      bug.PersonAssigned +
-        `</p>
-      </div></div>`;
+      `
+    <div class="card" id="spc" onclick="ProgressLogSub() title="Click to see more details"">
+    <div class="card-body">
+    <h5 class="card-title">${bug.projectName}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Assigned: ` +
+    bug.PersonAssigned +
+      `</h6>
+    <p class="card-text">Summary: ${bug.summary}</p>
+    <p class="card-text" style="color: ${color}">Severity: ${bug.Serverity}</p>
+    </div></div>`;
       Database.forEach(bug =>{
         if(bug.phase == "Progress"){
           ProgressBugs.push(bug);
@@ -153,18 +150,16 @@ let renderCards = (Database)=>{
         color = "blue";
       }
       e =
-        `
-      <div class="card" id="spc" onclick="DoneLogSub()">
-      <div class="card-body">
-      <h5 class="card-title">${bug.projectName} : ${bug.summary}</h5>
-      <h6 class="card-subtitle mb-2 text-muted"> Date: ${bug.date}</h6>
-      <p class="card-text">${bug.description}</p>
-      <p class="card-text" style="color: ${color}">Severity: ${bug.Serverity}</p>
-      <p class="card-text""> Status: ${bug.Status} - Assigned: ` +
-      bug.PersonAssigned +
-        `</p>
-      </div></div>`;
-      
+      `
+    <div class="card" id="spc" onclick="DoneLogSub() title="Click to see more details"">
+    <div class="card-body">
+    <h5 class="card-title">${bug.projectName}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Assigned: ` +
+    bug.PersonAssigned +
+      `</h6>
+    <p class="card-text">Summary: ${bug.summary}</p>
+    <p class="card-text" style="color: ${color}">Severity: ${bug.Serverity}</p>
+    </div></div>`;
       Database.forEach(bug =>{
         if(bug.phase == "Done"){
           DoneBugs.push(bug);

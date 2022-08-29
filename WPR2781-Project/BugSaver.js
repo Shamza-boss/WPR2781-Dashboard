@@ -27,6 +27,7 @@ if(id==null){
       data.append("Phase", document.getElementById("Phase").value);
       data.append("Serverity", document.getElementById("Serverity").value);
       data.append("DetailedSummary", document.getElementById("DetailedSummary").value);
+      data.append("projectedtime", document.getElementById("projectedtime").value);
 
 
   
@@ -39,8 +40,9 @@ if(id==null){
       let phase = value[5][1];
       let Serverity = value[6][1];
       let DetailedSummary = value[7][1];
+      let projectedTime = value[8][1];
   
-      function DataBaseBugs(id,summary,description, date, project,PersonAssigned,Status, phase, Serverity, DetailedSummary){
+      function DataBaseBugs(id,summary,description, date, project,PersonAssigned,Status, phase, Serverity, DetailedSummary, ProjectedTime){
         this.id = id;
         this.summary = summary;
         this.description = description;
@@ -51,11 +53,13 @@ if(id==null){
         this.phase = phase;
         this.Serverity = Serverity;
         this.DetailedSummary = DetailedSummary;
+        this.ProjectedTime = ProjectedTime;
      }
      if(summary!=null||description!=null||projectName!=null||personAssigned!=null||status!=null||phase!=null){
       let userId = id;
       if(userId!=null||userId!=" "){
-        let bug = new DataBaseBugs(userId,summary,description, date, projectName, personAssigned, status, phase, Serverity, DetailedSummary);
+        let time = new Date(projectedTime).toISOString().slice(0, 10);
+        let bug = new DataBaseBugs(userId,summary,description, date, projectName, personAssigned, status, phase, Serverity, DetailedSummary, time);
    
         Bugs.push(bug);//add bug to array that is to be saved
         localStorage.setItem("Vals", JSON.stringify(Bugs));

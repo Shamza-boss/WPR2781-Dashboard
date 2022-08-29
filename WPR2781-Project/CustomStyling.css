@@ -3,16 +3,19 @@
     margin: 3%;
 }
 body{
-    background: #282929 !important;
+    background: #D1D1D0 !important;
     /* margin:0 auto; */
 }
+h1{
+    font-size: 4rem !important;
+}
 h1,h2{
-    color: #F4C915;
+    color: #F05B5B;
 }
 
 .white-section{
     /* padding: 5% 3% 5% 3%; */
-    background: #282929;
+    background: #D1D1D0;
 }
 .colSec{
     /* margin:5px; */
@@ -21,6 +24,9 @@ h1,h2{
     /* width:20%; */
     background: #DDEBF2;
     text-align: center;
+}
+#FilterSec{
+    margin: 1% !important;
 }
 #spc{
     margin:5px;
